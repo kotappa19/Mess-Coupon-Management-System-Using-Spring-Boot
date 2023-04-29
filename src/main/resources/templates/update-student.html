@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org" 
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<style>
+</style>
+<title>Update Student</title>
+</head>
+<body>
+<nav class="navbar bg-dark" data-bs-theme="dark">
+     <span class="navbar-brand">
+     <span sec:authentication="principal.username">User</span>
+     </span>
+	<ul class="nav justify-content-end">
+  <li class="nav-item">
+  <a class="navbar-brand" th:href="@{/}">Home</a>
+   <a class="navbar-brand" th:href="@{/showCoupons}">View Coupons</a>
+  </li>
+  <li sec:authorize="isAuthenticated()"><a class="navbar-brand" th:href="@{/logout}">Logout</a></li>
+</ul>
+</nav> <br>
+<body>
+<div class = "container" style="margin-left: 25%;">
+		<div class = "row">
+			<div class = "col-md-6 col-md-offset-3"> <br>
+		<h1>Update Student</h1> <hr>
+        <form action="#" th:action="@{/updateStudent}" th:object="${students}" method="POST">
+        	<input type="hidden" th:field="*{id}" class="form-control mb-4 col-4">
+        	
+            <input type="hidden" th:field="*{usn}" class="form-control mb-4 col-4">
+
+            <input type="hidden" th:field="*{name}" class="form-control mb-4 col-4">
+
+            <input type="text" th:field="*{phone}" pattern="[6-9][0-9]{9}" required autofocus="autofocus" class="form-control mb-4 col-4">
+            <p th:if="${perror}"><span style="color: red;" th:text="${perror}"></span></p>
+            
+            <select class="form-control mb-4 col-4" id="hostel" name="hostel" required autofocus="autofocus" th:field="*{hostel}">
+  					<option value="">Select a Hostel</option>
+  					<option th:each="h : ${hostels}" th:value="${h}" th:text="${h}"></option>
+				</select>
+            
+				<select class="form-control mb-4 col-4" id="block" name="block" required autofocus="autofocus" th:field="*{block}">
+  					<option value="">Select a Block</option>
+  					<option th:each="b : ${blocks}" th:value="${b}" th:text="${b}"></option>
+				</select>
+				
+				<select class="form-control mb-4 col-4" id="year" name="year" required autofocus="autofocus" th:field="*{year}">
+  					<option value="">Select a Year</option>
+  					<option th:each="y : ${years}" th:value="${y}" th:text="${y}"></option>
+				</select>
+
+
+            <button type="submit" class="btn btn-primary btn-sm mb-3">Update Student</button>
+        </form>
+        	</div>
+		</div>
+	</div>
+</body>
+
+</html>
