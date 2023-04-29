@@ -1,2 +1,2 @@
 # Mess-Coupon-Management-System-Using-Spring-Boot
-This repository includes the Mess coupon system project using spring boot and thymeleaf.
+This repository includes the Mess coupon system project using spring boot and thymeleaf. The main objective to develop this application  is to reduce the wastage of food. It can be used in hostels by wardens to provide food coupons to the students. It is a single module application with ADMIN login. In this application ADMIN can be warden who creates coupon for every student. The ADMIN can add new students, delete students if they leave the hostel and also can update their details. By selecting the student USN the ADMIN will enter the number of days the students want coupon and the cost will be calculated based on number of days.
